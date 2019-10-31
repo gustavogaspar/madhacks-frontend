@@ -1,11 +1,12 @@
 .Footer{
-    background-color: #F8F8F8;
-    border-top: 1px solid #E7E7E7;
-    text-align: center;
+    background-color: #342663;
+    text-align: right;
     padding: 20px;
     position: fixed;
     left: 0;
     bottom: 0;
     height: 10vh;
     width: 100%;
+    color: orange;
+    font-weight: bold;
 }

@@ -1,40 +1,32 @@
-import React from 'react'
-import { Grid,Header, Button } from 'semantic-ui-react'
-import classes from './Home.module.css'
-
+import React from 'react';
+import { Button, Header, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import classes from './Home.module.css';
+import sideImage from '../../../assets/images/Picture1.jpg'
+ 
 const home = (props) => (
   <div className={classes.Home}>
-  <Grid divided='vertically' container className={classes.Grid}>
-    <Grid.Row columns={2} stretched verticalAlign="bottom">
-      <Grid.Column>
-        <Header as="h1" inverted>Welcome to Sirius</Header>
-      </Grid.Column>
-      <Grid.Column>
-        
-      </Grid.Column>
-    </Grid.Row>
-    <Grid.Row columns={2} stretched>
-      <Grid.Column >
-      This is your ultimate advisor.<br />
-Here you will find all you need<br />
-to improve your career, an your <br />
-skills.
-      </Grid.Column>
-      <Grid.Column>
-        test4
-      </Grid.Column>
-    </Grid.Row>
-    <Grid.Row columns={2} stretched>
-      <Grid.Column>
-      <Button basic circular inverted size='huge' color='green'>
-        Get Started
-      </Button> 
-      </Grid.Column>
-      <Grid.Column>
-        teste
-      </Grid.Column>
-    </Grid.Row>
-    </Grid>
+    <div className={classes.Left}>
+      <p>
+        <Header as='h1' inverted>Welcome to Sirius</Header>
+        The A.I. based advisor, that helps you improve your skills according to your career objectives.
+        Ask Sirius what you want to be, and he will help you by recomending courses, soft skills, communities and more...
+        <p>
+          <div className={classes.Button}>
+            <Button as={Link} to='/sirius'
+              floated="right"
+              color="orange"
+              size="huge"
+              circular
+            >Get Started</Button>
+          </div>
+        </p>
+      </p>
+
+    </div>
+    <div className={classes.Right}>
+        <Image src={sideImage} size="large" floated="right"/>
+    </div>
   </div>
 )
 

@@ -1,19 +1,33 @@
 .Home{
-    height: 80vh;
+    height: 75vh;
     color: white;
-}
-
-.Grid {
-    top: 0;
-    height:70vh;
-    border: none;
-}
-
-.Grid.Row {
-    border:none;
-}
-
-.Container{
+    width:100%;
+    font-size: 20px;
     display: flex;
-    vertical-align: middle;
+    top:0;
+    left:0;
+}
+
+.Left{
+    padding: 5%;
+    display: flex;
+    float: left;
+    width: 50vw;
+    top:0;
+    align-items: center;
+}
+
+.Right{
+    display: flex;
+    float: right;
+    width: 50vw;
+    padding: 100px;
+    top:0;
+    margin-right: 30px;
+    align-items: center;
+}
+
+.Button{
+    margin-top: 20px;
+    margin-right: 40px;
 }

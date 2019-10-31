@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header} from 'semantic-ui-react';
+import { Header, Container} from 'semantic-ui-react';
 import {Route} from 'react-router-dom';
 import Menu from '../../components/UI/Menu/Menu';
 import Home from '../../components/Pages/Home/Home';
@@ -12,16 +12,17 @@ import Footer from '../../components/UI/Footer/Footer';
 class App extends Component {
   render() {
     return (
-        <div>
+    <div>
         <Header>
-            <Menu />
+          <Menu />
         </Header>
+        <Container>
         <Route path="/"  exact render={()=><Home />} />
         <Route path="/sirius"  exact render={()=><Sirius />} />
         <Route path="/about"  exact render={()=><About />} />
-        <Footer>teste</Footer>
-
-        </div>
+                </Container>
+        <Footer>Powered by Oracle</Footer>
+        </div>        
     )
   }
 }
