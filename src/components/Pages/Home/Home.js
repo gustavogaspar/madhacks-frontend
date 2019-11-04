@@ -6,12 +6,11 @@ import sideImage from '../../../assets/images/Picture1.jpg'
  
 const home = (props) => (
   <div className={classes.Home}>
-    <div className={classes.Left}>
-      <p>
-        <Header as='h1' inverted>Welcome to Sirius</Header>
+    <div className={classes.Left}>    
+      <span>   
+      <Header as='h1' inverted className={classes.Header}>Welcome to Sirius<br /></Header>     
         The A.I. based advisor, that helps you improve your skills according to your career objectives.
         Ask Sirius what you want to be, and he will help you by recomending courses, soft skills, communities and more...
-        <p>
           <div className={classes.Button}>
             <Button as={Link} to='/sirius'
               floated="right"
@@ -20,8 +19,7 @@ const home = (props) => (
               circular
             >Get Started</Button>
           </div>
-        </p>
-      </p>
+      </span>
 
     </div>
     <div className={classes.Right}>
