@@ -6,3 +6,11 @@
     justify-content: center;
     text-align: center;
 }
+
+.Header{
+    display: block;
+}
+
+.ButtonGroup{
+    display:block;
+}

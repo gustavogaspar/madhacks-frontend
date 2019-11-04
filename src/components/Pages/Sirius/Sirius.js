@@ -48,11 +48,12 @@ class Sirius extends Component {
         console.log(this.state.tags)
         const url = 'http://132.145.163.158:5000/tag?tag=' + tags;
         let res = await axios.get(url);
-        let data = res.data;
+        let data =  await res.data;
+        let cookie = await res.data.sessionid;
         console.log(res.data)
         let tempArray = res.data.Resposta.map(igKey => igKey)
         console.log(tempArray)
-        this.setState({ question: data.Pergunta, cookie: res.data.sessionid, answers: tempArray })
+        this.setState({ question: data.Pergunta, cookie: cookie, answers: tempArray })
         console.log(this.state.question, this.state.cookie, this.state.answers)
         event.preventDefault();
     }
@@ -65,7 +66,7 @@ class Sirius extends Component {
             'Cookie': this.state.cookie
           }
         let  params = {resposta: btValue}
-        let res = await axios.post('http://132.145.163.158:5000/tag', params, {headers: dados})
+        let res = await axios.post('https://cors-anywhere.herokuapp.com/http://132.145.163.158:5000/tag', params, {headers: dados})
         console.log(res.data)
         if (res.data.offset === 0){
         let tempArray = res.data.Respostas.map(igKey => igKey)
@@ -86,8 +87,8 @@ class Sirius extends Component {
                 {this.state.cookie ?
                     <> {!this.state.offset ?
                     <>
-                    <Header as='h1' inverted>{this.state.question}</Header>
-                    <ButtonGroup>
+                    <Header as='h1' inverted className={classes.Header}>{this.state.question}</Header>
+                    <ButtonGroup className={classes.ButtonGroup}>
                         {this.state.answers.map(igKey => (
                             <Button
                                 onClick={() => this.handleQuestion(igKey)}>
