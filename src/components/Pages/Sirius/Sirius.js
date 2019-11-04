@@ -44,7 +44,7 @@ class Sirius extends Component {
         //IMPLEMENTAR BUSCA NO BOT COM SOCKET.IO
         //const socket = socketIOClient('https://4000-cadc0d02-8bcf-4120-9253-5a79a257a6be.ws-us1.gitpod.io/')
         //socket.emit('teste', (this.state.value))
-        const tags = 2
+        const tags = this.state.value
         console.log(this.state.tags)
         const url = 'http://132.145.163.158:5000/tag?tag=' + tags;
         let res = await axios.get(url);

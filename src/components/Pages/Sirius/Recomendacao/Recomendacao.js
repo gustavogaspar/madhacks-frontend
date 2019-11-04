@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+
 
 const recomendacao = (props) => (
     <Card.Group>
@@ -15,7 +15,7 @@ const recomendacao = (props) => (
                 </Card.Content>
                 <Card.Content extra>
                     <div className='ui two buttons'>
-                        <Button basic color='green' as={Link} to={course.course_link} >
+                        <Button  color='orange' icon='shop' as='a' href={course.course_link} target='_blank' >
                             Purchase</Button>
                     </div>
                 </Card.Content>
