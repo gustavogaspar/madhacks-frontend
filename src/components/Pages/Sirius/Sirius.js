@@ -55,18 +55,18 @@ class Sirius extends Component {
         console.log(tempArray)
         this.setState({ question: data.Pergunta, cookie: cookie, answers: tempArray })
         console.log(this.state.question, this.state.cookie, this.state.answers)
-        event.preventDefault();
     }
 
     async handleQuestion(btValue) {
         
         console.log('Botão Escolhido: ' + btValue);
+        console.log('[SESSION] -',this.state.cookie)
         let dados = {
             'Content-Type': 'application/json',
             'Cookie': this.state.cookie
           }
         let  params = {resposta: btValue}
-        let res = await axios.post('https://cors-anywhere.herokuapp.com/http://132.145.163.158:5000/tag', params, {headers: dados})
+        let res = await axios.post('http://132.145.163.158:5000/tag', params, {headers: dados})
         console.log(res.data)
         if (res.data.offset === 0){
         let tempArray = res.data.Respostas.map(igKey => igKey)
