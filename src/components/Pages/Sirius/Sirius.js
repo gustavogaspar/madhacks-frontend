@@ -47,7 +47,7 @@ class Sirius extends Component {
         const tags = this.state.value
         console.log(this.state.tags)
         const url = 'http://132.145.163.158:5000/tag?tag=' + tags;
-        let res = await axios.get(url);
+        let res = await axios.get(url, {withCredentials:true});
         let data =  await res.data;
         let cookie = await res.data.sessionid;
         console.log(res.headers)
