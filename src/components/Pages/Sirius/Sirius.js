@@ -50,6 +50,7 @@ class Sirius extends Component {
         let res = await axios.get(url);
         let data =  await res.data;
         let cookie = await res.data.sessionid;
+        console.log(res.headers)
         console.log(res.data)
         let tempArray = res.data.Resposta.map(igKey => igKey)
         console.log(tempArray)
@@ -67,8 +68,8 @@ class Sirius extends Component {
           }
         let  params = {resposta: btValue}
         let res = await axios.post('http://132.145.163.158:5000/tag', params, {headers: dados})
-        console.log(res.data)
-        if (res.data.offset === 0){
+        console.log( await res.data)
+        if (res.data.offset === 0 ){
         let tempArray = res.data.Respostas.map(igKey => igKey)
         console.log(tempArray)
         this.setState({ question: res.data.Pergunta, answers: tempArray })
