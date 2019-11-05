@@ -67,7 +67,7 @@ class Sirius extends Component {
             'Cookie': this.state.cookie
           }
         let  params = {resposta: btValue}
-        let res = await axios.post('http://132.145.163.158:5000/tag', params, {headers: dados})
+        let res = await axios.post('http://132.145.163.158:5000/tag', params, {headers: dados},{withCredentials:true})
         console.log( await res.data)
         if (res.data.offset === 0 ){
         let tempArray = res.data.Respostas.map(igKey => igKey)
