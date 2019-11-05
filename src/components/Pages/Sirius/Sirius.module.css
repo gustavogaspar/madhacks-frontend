@@ -8,9 +8,16 @@
 }
 
 .Header{
-    display: block;
+    display: flex;
+    align-self: center;
+}
+
+.Grid {
+    display: flex;
+    justify-content: center;
 }
 
 .ButtonGroup{
-    display:block;
+    display: flex;
+    align-self: center;
 }
