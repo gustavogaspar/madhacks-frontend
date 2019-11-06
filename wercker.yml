@@ -74,4 +74,4 @@ deploy-to-kubernetes:
         server: $OKE_MASTER
         token: $OKE_TOKEN
         insecure-skip-tls-verify: true
-        command: rollout status deployment/webhook
+        command: rollout status deployment/frontend
