@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+        commit: ${WERCKER_GIT_COMMIT}
+    spec:
+      containers:
+      - name: frontend
+        image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
+        ports:
+        - name: frontend
+          containerPort: 3000
+          protocol: TCP
+      imagePullSecrets:
+        - name: wercker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhook-svc
+spec:
+  selector:
+    app: webhook
+  ports:
+    - port: 4000
+      targetPort: 3000
+  type: ClusterIP
+---
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: webhook-ingress
+  spec:
+    rules:
+      - http:
+          paths:
+            - backend:
+                serviceName: frontend-svc
+                servicePort: 80
+              path: /
