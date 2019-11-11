@@ -24,14 +24,6 @@ class Sirius extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        const socket = socketIOClient('https://4000-cadc0d02-8bcf-4120-9253-5a79a257a6be.ws-us02.gitpod.io/')
-        socket.on('result', (payload) => {
-            console.log('[PAYLOAD] -', payload)
-        })
-    }
-
-
     changeQuestionHandler(newQuestion) {
         this.setState({
             question: newQuestion
