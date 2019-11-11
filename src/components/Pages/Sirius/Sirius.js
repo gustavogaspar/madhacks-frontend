@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import classes from './Sirius.module.css';
 import axios from 'axios';
 import Recomendacao from './Recomendacao/Recomendacao';
-import socketIOClient from "socket.io-client";
 
 
 class Sirius extends Component {
@@ -46,7 +45,7 @@ class Sirius extends Component {
             text: nlpReq
         }
         this.setState({question: 'Just a second, Sirius is thinking'})
-        let botRes = await axios.post('http://129.146.172.220/test/message', params, { headers: dados });
+        let botRes = await axios.post('https://cors-anywhere.herokuapp.com/http://129.146.172.220/test/message', params, { headers: dados });
         console.log(botRes)
 
         const urlToBackend = 'http://129.146.172.220:5000/tag?tag=' + botRes.data.messagePayload.text;
