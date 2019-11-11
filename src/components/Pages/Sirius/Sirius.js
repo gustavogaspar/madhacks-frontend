@@ -45,7 +45,7 @@ class Sirius extends Component {
             text: nlpReq
         }
         this.setState({question: 'Just a second, Sirius is thinking'})
-        let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220/test/message', params, { headers: dados });
+        let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
         console.log(botRes)
 
         const urlToBackend = 'http://129.146.172.220:5000/tag?tag=' + botRes.data.messagePayload.text;
