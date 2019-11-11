@@ -54,10 +54,10 @@ class Sirius extends Component {
             text: nlpReq
         }
         this.setState({question: 'Just a second, Sirius is thinking'})
-        let botRes = await axios.post('https://948f14be.ngrok.io/test/message', params, { headers: dados });
+        let botRes = await axios.post('http://129.146.172.220/test/message', params, { headers: dados });
         console.log(botRes)
 
-        const urlToBackend = 'http://132.145.163.158:5000/tag?tag=' + botRes.data.messagePayload.text;
+        const urlToBackend = 'http://129.146.172.220:5000/tag?tag=' + botRes.data.messagePayload.text;
 
         let res = await axios.get(urlToBackend, { withCredentials: true });
         let data = await res.data;
@@ -78,7 +78,7 @@ class Sirius extends Component {
             'Set-Cookie': this.state.cookie
         }
         let params = { resposta: btValue }
-        let res = await axios.post('http://132.145.163.158:5000/tag', params, { headers: dados }, { withCredentials: true })
+        let res = await axios.post('http://129.146.172.220:5000/tag', params, { headers: dados }, { withCredentials: true })
         console.log(await res.data)
         if (res.data.offset === 0) {
             let tempArray = res.data.Respostas.map(igKey => igKey)
