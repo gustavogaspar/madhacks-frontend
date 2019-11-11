@@ -1,3 +1,4 @@
 .App{    
     background: #6d51c0;  /* fallback for old browsers */
+    overflow: auto;
  }
