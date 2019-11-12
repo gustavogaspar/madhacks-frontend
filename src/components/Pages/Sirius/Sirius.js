@@ -67,7 +67,8 @@ class Sirius extends Component {
         console.log('[SESSION] -', this.state.cookie)
         let dados = {
             'Content-Type': 'application/json',
-            'Cookie': this.state.cookie
+            'Cookie': this.state.cookie,
+            'Set-Cookie': this.state.cookie
         }
         let params = { resposta: btValue }
         let res = await axios.post('http://129.146.172.220:5000/tag', params, { headers: dados }, { withCredentials: true })
