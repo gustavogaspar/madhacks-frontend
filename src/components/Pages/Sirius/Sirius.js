@@ -46,7 +46,7 @@ class Sirius extends Component {
         }
         this.setState({question: 'Just a second, Sirius is thinking'})
         let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
-        console.log(botRes)
+        //console.log(botRes)
 
         const urlToBackend = 'http://129.146.172.220:5000/tag?tag=' + botRes.data.messagePayload.text;
 
@@ -54,11 +54,11 @@ class Sirius extends Component {
         let data = await res.data;
         console.log(res.headers)
         let cookie = await res.data.sessionid;
-        console.log(res.data)
+        //console.log(res.data)
         let tempArray = res.data.Resposta.map(igKey => igKey)
-        console.log(tempArray)
+        //console.log(tempArray)
         this.setState({ question: data.Pergunta, cookie: cookie, answers: tempArray })
-        console.log(this.state.question, this.state.cookie, this.state.answers)
+        //console.log(this.state.question, this.state.cookie, this.state.answers)
     }
 
     async handleQuestion(btValue) {
