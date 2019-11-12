@@ -52,6 +52,7 @@ class Sirius extends Component {
 
         let res = await axios.get(urlToBackend, { withCredentials: true });
         let data = await res.data;
+        console.log(res.headers)
         let cookie = await res.data.sessionid;
         console.log(res.data)
         let tempArray = res.data.Resposta.map(igKey => igKey)
