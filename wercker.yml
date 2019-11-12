@@ -13,7 +13,7 @@ build:
 push:
   steps:
     - internal/docker-push:
-            entrypoint: serve -s build
+            entrypoint: serve -s build 0:80
             working-dir: $WERCKER_ROOT
             tag: $WERCKER_GIT_COMMIT
             ports: "80"
