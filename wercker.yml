@@ -7,13 +7,13 @@ build:
         code: |
           npm run-script build
           npm install -g serve
-          serve -s build
+          
           
           
 push:
   steps:
     - internal/docker-push:
-            entrypoint: serve
+            entrypoint: serve -s build
             working-dir: $WERCKER_ROOT
             tag: $WERCKER_GIT_COMMIT
             ports: "80"
