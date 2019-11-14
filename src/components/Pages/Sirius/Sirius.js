@@ -1,4 +1,4 @@
-import { Form, Button, Header, ButtonGroup, Grid } from "semantic-ui-react";
+import { Form, Button, Header, ButtonGroup, Grid,Loader } from "semantic-ui-react";
 import React, { Component } from 'react';
 import classes from './Sirius.module.css';
 import axios from 'axios';
@@ -16,11 +16,17 @@ class Sirius extends Component {
             cookie: null,
             answers: [" "],
             offset: 0,
-            courses: [" "]
+            courses: [" "],
+            user: " "
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    componentDidMount() {
+        let username = "user" + Math.floor((Math.random() * 1001) * (Math.random() * 1000))
+        console.log("[USER] - ", username)
+        this.setState({ user: username })
     }
 
     changeQuestionHandler(newQuestion) {
@@ -41,10 +47,10 @@ class Sirius extends Component {
             'Content-Type': 'application/json'
         }
         let params = {
-            user: "frontEnd",
+            user: this.state.user,
             text: nlpReq
         }
-        this.setState({question: 'Just a second, Sirius is thinking'})
+        this.setState({ question: 'Just a second, Sirius is thinking' })
         let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
         //console.log(botRes)
 
@@ -93,7 +99,7 @@ class Sirius extends Component {
                     <> {!this.state.offset ?
                         <>
                             <Grid className={classes.Grid} >
-                                <Grid.Row> 
+                                <Grid.Row>
                                     <h1 className={classes.Header}>{this.state.question}</h1>
                                 </Grid.Row>
                                 <Grid.Row>
@@ -115,8 +121,10 @@ class Sirius extends Component {
                     :
                     <Form onSubmit={this.handleSubmit}>
                         <Header as='h1' inverted>{this.state.question}</Header>
-                        <Form.Input value={this.state.value} onChange={this.handleChange} />
-                        <Button type="submit" color='orange' size="huge" circular>Start</Button>
+                        {this.state.question === "Just a second, Sirius is thinking" ? <Loader active inline inverted size="large"/> :
+                            <><Form.Input value={this.state.value} onChange={this.handleChange} />
+                                <Button type="submit" color='orange' size="huge" circular>Start</Button></>}
+
                     </Form>
                 }
             </div>
