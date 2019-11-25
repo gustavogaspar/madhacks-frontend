@@ -55,7 +55,7 @@ class Sirius extends Component {
         let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
         //console.log(botRes)
 
-        const urlToBackend = 'http://0.0.0.0:5000/tag?tag=' + botRes.data.messagePayload.text;
+        const urlToBackend = 'http://localhost:5000/tag?tag=' + botRes.data.messagePayload.text;
 
         let res = await axios.get(urlToBackend, { withCredentials: true });
         let data = await res.data;
