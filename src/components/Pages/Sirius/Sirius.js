@@ -17,7 +17,8 @@ class Sirius extends Component {
             answers: [" "],
             offset: 0,
             courses: [" "],
-            user: " "
+            user: " ",
+            loader: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -50,7 +51,7 @@ class Sirius extends Component {
             user: this.state.user,
             text: nlpReq
         }
-        this.setState({ question: 'Just a second, Sirius is thinking', loader: true })
+        this.setState({ question: 'Just a second, Sirius is thinking'})
         let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
         //console.log(botRes)
 
@@ -71,7 +72,7 @@ class Sirius extends Component {
 
         console.log('Botão Escolhido: ' + btValue);
         console.log('[SESSION] -', this.state.cookie)
-        this.setState({ question: 'Just a second, Sirius is thinking' })
+        this.setState({ loader: true })
         let dados = {
             'Content-Type': 'application/json',
             'Cookie': this.state.cookie,
@@ -104,7 +105,7 @@ class Sirius extends Component {
                                     <h1 className={classes.Header}>{this.state.question}</h1>
                                 </Grid.Row>
                                 <Grid.Row>
-                                    {this.state.question === "Just a second, Sirius is thinking" ? <Loader active inline inverted size="large"/> :
+                                    {this.state.loader ? <Loader active inline inverted size="medium"/> :
                                     <ButtonGroup className={classes.ButtonGroup}>
                                         {this.state.answers.map(igKey => (
                                             <Button
