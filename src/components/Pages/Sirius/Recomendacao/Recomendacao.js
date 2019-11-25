@@ -7,7 +7,7 @@ const recomendacao = (props) => (
         {props.courses.map((course,index) => (
             <Card>
                 <Card.Content>
-        <Card.Header>{index+". "+course.course_name}</Card.Header>
+        <Card.Header>{"Step "+(index+1)+". "+course.course_name}</Card.Header>
                     <Card.Meta>Type: {course.type}</Card.Meta>
                     <Card.Description>
                         Price: <strong>${course.price}</strong>
