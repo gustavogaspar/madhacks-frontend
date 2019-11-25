@@ -55,7 +55,7 @@ class Sirius extends Component {
         let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
         //console.log(botRes)
 
-        const urlToBackend = 'http://129.146.172.220:5000/tag?tag=' + botRes.data.messagePayload.text;
+        const urlToBackend = 'http://0.0.0.0:5000/tag?tag=' + botRes.data.messagePayload.text;
 
         let res = await axios.get(urlToBackend, { withCredentials: true });
         let data = await res.data;
@@ -79,7 +79,7 @@ class Sirius extends Component {
             'Set-Cookie': this.state.cookie
         }
         let params = { resposta: btValue }
-        let res = await axios.post('http://129.146.172.220:5000/tag', params, { headers: dados, withCredentials: true })
+        let res = await axios.post('http://0.0.0.0:5000/tag', params, { headers: dados, withCredentials: true })
         console.log(await res.data)
         if (res.data.offset === 0) {
             let tempArray = res.data.Respostas.map(igKey => igKey)
