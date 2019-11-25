@@ -40,7 +40,7 @@ class Sirius extends Component {
 
     }
 
-    async handleSubmit(event) {
+    async handleSubmit() {
         console.log('nlpRequest: ' + this.state.value);
         const nlpReq = this.state.value
         let dados = {

@@ -4,10 +4,10 @@ import { Card, Button } from 'semantic-ui-react';
 
 const recomendacao = (props) => (
     <Card.Group>
-        {props.courses.map(course => (
+        {props.courses.map((course,index) => (
             <Card>
                 <Card.Content>
-                    <Card.Header>{course.course_name}</Card.Header>
+        <Card.Header>{index}. {course.course_name}</Card.Header>
                     <Card.Meta>Type: {course.type}</Card.Meta>
                     <Card.Description>
                         Price: <strong>${course.price}</strong>
