@@ -84,7 +84,7 @@ class Sirius extends Component {
         if (res.data.offset === 0) {
             let tempArray = res.data.Respostas.map(igKey => igKey)
             console.log(tempArray)
-            this.setState({ question: res.data.Pergunta, answers: tempArray })
+            this.setState({ question: res.data.Pergunta, answers: tempArray, loader: false })
             console.log(this.state.question, this.state.answers)
         }
         else {
