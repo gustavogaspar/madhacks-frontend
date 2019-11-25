@@ -50,7 +50,7 @@ class Sirius extends Component {
             user: this.state.user,
             text: nlpReq
         }
-        this.setState({ question: 'Just a second, Sirius is thinking' })
+        this.setState({ question: 'Just a second, Sirius is thinking', loader: true })
         let botRes = await axios.post('https://cors-anywhere.herokuapp.com/129.146.172.220:4000/test/message', params, { headers: dados });
         //console.log(botRes)
 
@@ -104,15 +104,16 @@ class Sirius extends Component {
                                     <h1 className={classes.Header}>{this.state.question}</h1>
                                 </Grid.Row>
                                 <Grid.Row>
+                                    {this.state.question === "Just a second, Sirius is thinking" ? <Loader active inline inverted size="large"/> :
                                     <ButtonGroup className={classes.ButtonGroup}>
-
                                         {this.state.answers.map(igKey => (
                                             <Button
                                                 onClick={() => this.handleQuestion(igKey)}
                                                 color='orange'>
                                                 {igKey}</Button>
                                         ))}
-                                    </ButtonGroup>
+                                    
+                                    </ButtonGroup>}
                                 </Grid.Row>
                             </Grid></> :
                         <Recomendacao
