@@ -71,6 +71,7 @@ class Sirius extends Component {
 
         console.log('Botão Escolhido: ' + btValue);
         console.log('[SESSION] -', this.state.cookie)
+        this.setState({ question: 'Just a second, Sirius is thinking' })
         let dados = {
             'Content-Type': 'application/json',
             'Cookie': this.state.cookie,
