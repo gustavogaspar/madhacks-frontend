@@ -75,7 +75,7 @@ class Sirius extends Component {
         this.setState({ loader: true })
         let dados = {
             'Content-Type': 'application/json',
-            'Cookie': this.state.cookie,
+
             'Set-Cookie': this.state.cookie
         }
         let params = { resposta: btValue }
